@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   texture_color.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ksudyn <ksudyn@student.42.fr>              +#+  +:+       +#+        */
+/*   By: pablalva <pablalva@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 16:05:04 by ksudyn            #+#    #+#             */
-/*   Updated: 2025/10/06 16:31:56 by ksudyn           ###   ########.fr       */
+/*   Updated: 2025/10/07 16:29:50 by pablalva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ int	parse_color_value(const char *str, int rgb[3])
 static int	parse_floor_color(char **split, t_cub *game)
 {
 	if (game->textures->floor_set)
-		return (ft_error(3));
+		return (0);
 	if (!parse_color_value(split[1], game->textures->floor_rgb))
 		return (0);
 	game->textures->floor_set = 1;
@@ -65,7 +65,7 @@ static int	parse_floor_color(char **split, t_cub *game)
 static int	parse_ceiling_color(char **split, t_cub *game)
 {
 	if (game->textures->ceiling_set)
-		return (ft_error(3));
+		return (0);
 	if (!parse_color_value(split[1], game->textures->ceiling_rgb))
 		return (0);
 	game->textures->ceiling_set = 1;
@@ -79,13 +79,13 @@ int	parse_color_line(char *line, t_cub *game)
 
 	split = ft_split(line, ' ');
 	if (!split || !split[0] || !split[1])
-		return (free_matrix(split), ft_error(3));
+		return (free_matrix(split), 0);
 	if (!ft_strncmp(split[0], "F", 2))
 		result = parse_floor_color(split, game);
 	else if (!ft_strncmp(split[0], "C", 2))
 		result = parse_ceiling_color(split, game);
 	else
-		result = ft_error(3);
+		result = 0;
 	free_matrix(split);
 	return (result);
 }

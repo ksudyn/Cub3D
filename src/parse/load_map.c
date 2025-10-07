@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   load_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ksudyn <ksudyn@student.42.fr>              +#+  +:+       +#+        */
+/*   By: pablalva <pablalva@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/02 15:33:05 by ksudyn            #+#    #+#             */
-/*   Updated: 2025/10/06 20:44:56 by ksudyn           ###   ########.fr       */
+/*   Updated: 2025/10/07 16:21:30 by pablalva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int	process_line(char **line, char ***map, int *height, t_cub *cub)
 		return (1);
 	}
 	if (cub->map_finished)
-		return (ft_error(8), 0);
+		return (-1);
 	if (is_texture_line(*line))
 	{
 		if (parse_texture_line(*line, cub) == -1)
