@@ -1,8 +1,3 @@
-## cub3D
-
-Este archivo sigue la misma estética, rigurosidad y estructura limpia que el de `philosophers`, listo para que lo crees en la raíz de tu proyecto.
-
-```markdown
 # cub3D (42 Project)
 
 ## Introducción
